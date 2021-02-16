@@ -1,7 +1,8 @@
-const express = require('express');
-const { MongoDbRepository } = require('../repositories/mongodb-repository');
-const { JobSearch } = require('../models');
-const asyncHandler = require('../util/error-handler');
+import { MongoDbRepository } from '../repositories/mongodb-repository';
+import { JobSearch } from '../models';
+import express from 'express';
+import asyncHandler from '../util/error-handler';
+
 const router = express.Router();
 const repository = new MongoDbRepository(JobSearch);
 

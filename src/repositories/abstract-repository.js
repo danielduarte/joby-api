@@ -3,7 +3,7 @@ class AbstractRepository {
     this.idName = 'id';
   }
 
-  async entityExists(id) {
+  async entityExists(id) { // eslint-disable-line @typescript-eslint/no-unused-vars
     AbstractRepository.throwNotImplementedError();
   }
 
@@ -17,19 +17,19 @@ class AbstractRepository {
     AbstractRepository.throwNotImplementedError();
   }
 
-  async create(data) {
+  async create(data) { // eslint-disable-line @typescript-eslint/no-unused-vars
     AbstractRepository.throwNotImplementedError();
   }
 
-  async findById(id) {
+  async findById(id) { // eslint-disable-line @typescript-eslint/no-unused-vars
     AbstractRepository.throwNotImplementedError();
   }
 
-  async updateById(id, data) {
+  async updateById(id, data) { // eslint-disable-line @typescript-eslint/no-unused-vars
     AbstractRepository.throwNotImplementedError();
   }
 
-  async deleteById(id) {
+  async deleteById(id) { // eslint-disable-line @typescript-eslint/no-unused-vars
     AbstractRepository.throwNotImplementedError();
   }
 

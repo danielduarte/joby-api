@@ -1,4 +1,4 @@
-const { AbstractRepository } = require('../repositories/abstract-repository');
+import { AbstractRepository } from '../repositories/abstract-repository';
 
 class InMemoryRepository extends AbstractRepository {
   constructor() {

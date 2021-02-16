@@ -1,13 +1,13 @@
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const mongoose = require('mongoose');
+import express from 'express';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+import mongoose from 'mongoose';
 
-const indexRouter = require('./routes/index');
-const jobSearchesRouter = require('./routes/job-searches');
-const applicationsRouter = require('./routes/applications');
-const applicationUpdatesRouter = require('./routes/application-updates');
+import indexRouter from './routes/index';
+import jobSearchesRouter from './routes/job-searches';
+import applicationsRouter from './routes/applications';
+import applicationUpdatesRouter from './routes/application-updates';
 
 const app = express();
 
@@ -23,7 +23,8 @@ app.use('/job-searches/:jsId/applications', applicationsRouter);
 app.use('/job-searches/:jsId/applications/:appId/updates', applicationUpdatesRouter);
 
 // Custom error handler
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res, next) { // eslint-disable-line @typescript-eslint/no-unused-vars
+  // `next` param must be present even when it's not used, so the middleware is taken as an error handler by express
   res.status(400).json({ message: err.message });
 });
 

@@ -1,15 +1,22 @@
 module.exports = {
+  root: true,
   env: {
     commonjs: true,
     es2021: true,
     node: true,
   },
-  extends: [
-    'standard',
-  ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 12,
   },
+  plugins: [
+    '@typescript-eslint',
+  ],
+  extends: [
+    'standard',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+  ],
   rules: {
     semi: ['error', 'always'],
     'comma-dangle': ['error', {
