@@ -23,7 +23,7 @@ app.use('/job-searches/:jsId/applications', applicationsRouter);
 app.use('/job-searches/:jsId/applications/:appId/updates', applicationUpdatesRouter);
 
 // Custom error handler
-app.use(function(err, req, res, next) { // eslint-disable-line @typescript-eslint/no-unused-vars
+app.use(function(err: Error, req: any, res: any, next: any) { // eslint-disable-line @typescript-eslint/no-unused-vars
   // `next` param must be present even when it's not used, so the middleware is taken as an error handler by express
   res.status(400).json({ message: err.message });
 });

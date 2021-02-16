@@ -7,19 +7,19 @@ const router = express.Router();
 const repository = new MongoDbRepository(ApplicationUpdate);
 
 // Get the list of updates of an application.
-router.get('/', asyncHandler(async function(req, res) {
+router.get('/', asyncHandler(async function(req: any, res: any) {
   const entities = await repository.findAll({ jobSearchId: req.params.jsId, appId: req.params.appId });
   res.json(entities);
 }));
 
 // Create an application update.
-router.post('/', asyncHandler(async function(req, res) {
+router.post('/', asyncHandler(async function(req: any, res: any) {
   const entity = await repository.create({ ...req.body, jobSearchId: req.params.jsId, appId: req.params.appId });
   res.json(entity);
 }));
 
 // Get an application update by id.
-router.get('/:uId', asyncHandler(async function(req, res) {
+router.get('/:uId', asyncHandler(async function(req: any, res: any) {
   const entities = await repository.findAll({ _id: req.params.uId, jobSearchId: req.params.jsId, appId: req.params.appId });
   if (entities.length === 0) {
     throw new Error(`Entity with id "${req.params.uId}" does not exist in parent entity with id "${req.params.jsId}"`);
@@ -28,7 +28,7 @@ router.get('/:uId', asyncHandler(async function(req, res) {
 }));
 
 // Update an application update by id.
-router.patch('/:uId', asyncHandler(async function(req, res) {
+router.patch('/:uId', asyncHandler(async function(req: any, res: any) {
   const updateCount = await repository.update({ _id: req.params.uId, jobSearchId: req.params.jsId, appId: req.params.appId }, req.body);
   if (updateCount === 0) {
     throw new Error(`Entity with id "${req.params.uId}" does not exist in parent entity with id "${req.params.appId}"`);
@@ -37,7 +37,7 @@ router.patch('/:uId', asyncHandler(async function(req, res) {
 }));
 
 // Delete an application update by id.
-router.delete('/:uId', asyncHandler(async function(req, res) {
+router.delete('/:uId', asyncHandler(async function(req: any, res: any) {
   const deleteCount = await repository.delete({ _id: req.params.uId, jobSearchId: req.params.jsId, appId: req.params.appId });
   if (deleteCount === 0) {
     throw new Error(`Entity with id "${req.params.uId}" does not exist in parent entity with id "${req.params.appId}"`);
@@ -45,4 +45,4 @@ router.delete('/:uId', asyncHandler(async function(req, res) {
   res.end();
 }));
 
-module.exports = router;
+export default router;
