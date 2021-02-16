@@ -33,12 +33,12 @@ const applicationUpdateSchema = new Schema({
 },
 { timestamps: true });
 
-
 const Application = mongoose.model('Application', applicationSchema);
 const ApplicationUpdate = mongoose.model('ApplicationUpdate', applicationUpdateSchema);
 const JobSearch = mongoose.model('JobSearch', jobSearchSchema);
 
 export {
   Application,
-  ApplicationUpdate,JobSearch
+  ApplicationUpdate,
+  JobSearch
 };

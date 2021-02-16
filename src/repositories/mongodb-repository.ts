@@ -1,31 +1,31 @@
 import { AbstractRepository } from './abstract-repository';
-import {Model,Document} from "mongoose";
+import { Model, Document } from 'mongoose';
+import { T, Filter } from '../util/types';
 
 export class MongoDbRepository extends AbstractRepository {
+  protected modelClass: Model<Document<T>>;
 
-  protected modelClass: Model<Document<any>>;
-
-  constructor(modelClass: Model<Document<any>>) {
+  constructor(modelClass: Model<Document<T>>) {
     super();
     this.modelClass = modelClass;
   }
 
-  async entityExists(id: string) {
+  async entityExists(id: string): Promise<boolean> {
     const entity = await this.modelClass.findById(id);
     return entity !== null;
   }
 
-  async findAll(filter?: any) {
+  async findAll(filter?: Filter): Promise<Document<T>[]> {
     return this.modelClass.find(filter);
   }
 
-  async create(data: any) {
+  async create(data: T): Promise<Document<T>> {
     // eslint-disable-next-line new-cap
     const entity = new this.modelClass(data);
     return entity.save();
   }
 
-  async findById(id: string) {
+  async findById(id: string): Promise<Document<T>> {
     const entity = await this.modelClass.findById(id);
 
     if (entity === null) {
@@ -35,7 +35,7 @@ export class MongoDbRepository extends AbstractRepository {
     return entity;
   }
 
-  async update(filter: any, data: any) {
+  async update(filter: Filter, data: T): Promise<number> {
     const result = await this.modelClass.updateMany(filter, data);
     if (result.ok !== 1) {
       throw new Error('Error trying to update entities');
@@ -44,11 +44,11 @@ export class MongoDbRepository extends AbstractRepository {
     return result.n;
   }
 
-  async updateById(id: string, data: any) {
+  async updateById(id: string, data: T): Promise<void> {
     await this.modelClass.updateOne({ _id: id }, data);
   }
 
-  async delete(filter?: any) {
+  async delete(filter?: Filter): Promise<number> {
     const result = await this.modelClass.deleteMany(filter);
     if (result.ok !== 1) {
       throw new Error('Error trying to delete entities');
@@ -57,7 +57,7 @@ export class MongoDbRepository extends AbstractRepository {
     return result.deletedCount;
   }
 
-  async deleteById(id: string) {
+  async deleteById(id: string): Promise<void> {
     await this.modelClass.deleteOne({ _id: id });
   }
 }

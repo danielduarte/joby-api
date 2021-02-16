@@ -1,36 +1,34 @@
-import {Model,Document} from "mongoose";
+import { Document } from 'mongoose';
+import { T } from '../util/types';
 
 export class AbstractRepository {
-  constructor() {
-  }
-
   async entityExists(id: string): Promise<boolean> { // eslint-disable-line @typescript-eslint/no-unused-vars
     AbstractRepository.throwNotImplementedError();
   }
 
-  async validateEntityExists(id: string) {
+  async validateEntityExists(id: string): Promise<void> {
     if (!(await this.entityExists(id))) {
       throw new Error(`Entity with id "${id}" does not exist`);
     }
   }
 
-  async findAll(): Promise<Document<any>[]> {
+  async findAll(): Promise<Document<T>[]> {
     AbstractRepository.throwNotImplementedError();
   }
 
-  async create(data: any): Promise<Document<any>> { // eslint-disable-line @typescript-eslint/no-unused-vars
+  async create(data: T): Promise<Document<T>> { // eslint-disable-line @typescript-eslint/no-unused-vars
     AbstractRepository.throwNotImplementedError();
   }
 
-  async findById(id: string): Promise<Document<any>> { // eslint-disable-line @typescript-eslint/no-unused-vars
+  async findById(id: string): Promise<Document<T>> { // eslint-disable-line @typescript-eslint/no-unused-vars
     AbstractRepository.throwNotImplementedError();
   }
 
-  async updateById(id: string, data: any) { // eslint-disable-line @typescript-eslint/no-unused-vars
+  async updateById(id: string, data: T): Promise<void> { // eslint-disable-line @typescript-eslint/no-unused-vars
     AbstractRepository.throwNotImplementedError();
   }
 
-  async deleteById(id: string) { // eslint-disable-line @typescript-eslint/no-unused-vars
+  async deleteById(id: string): Promise<void> { // eslint-disable-line @typescript-eslint/no-unused-vars
     AbstractRepository.throwNotImplementedError();
   }
 
