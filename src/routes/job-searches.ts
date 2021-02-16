@@ -8,7 +8,7 @@ const repository = new MongoDbRepository(JobSearch);
 
 // Get the list of job searches.
 router.get('/', asyncHandler(async function(req: Request, res: Response) {
-  const entities = await repository.findAll();
+  const entities = await repository.findAll(req.query);
   res.json(entities);
 }));
 

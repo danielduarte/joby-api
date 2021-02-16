@@ -8,7 +8,7 @@ const repository = new MongoDbRepository(ApplicationUpdate);
 
 // Get the list of updates of an application.
 router.get('/', asyncHandler(async function(req: Request, res: Response) {
-  const entities = await repository.findAll({ jobSearchId: req.params.jsId, appId: req.params.appId });
+  const entities = await repository.findAll({...req.query, jobSearchId: req.params.jsId, appId: req.params.appId });
   res.json(entities);
 }));
 

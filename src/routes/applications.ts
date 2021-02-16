@@ -8,7 +8,7 @@ const repository = new MongoDbRepository(Application);
 
 // Get the list of applications for a job search.
 router.get('/', asyncHandler(async function(req: Request, res: Response) {
-  const entities = await repository.findAll({ jobSearchId: req.params.jsId });
+  const entities = await repository.findAll({...req.query, jobSearchId: req.params.jsId });
   res.json(entities);
 }));
 
