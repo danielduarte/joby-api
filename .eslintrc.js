@@ -17,6 +17,7 @@ module.exports = {
     'standard',
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
+    // "plugin:@typescript-eslint/recommended-requiring-type-checking", // @todo add more strict type checking
   ],
   rules: {
     semi: ['error', 'always'],

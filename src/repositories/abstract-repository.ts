@@ -12,23 +12,23 @@ export class AbstractRepository {
     }
   }
 
-  async findAll(): Promise<Document<T>[]> {
+  findAll(): Promise<Document<T>[]> {
     AbstractRepository.throwNotImplementedError();
   }
 
-  async create(data: T): Promise<Document<T>> { // eslint-disable-line @typescript-eslint/no-unused-vars
+  create(data: T): Promise<Document<T>> { // eslint-disable-line @typescript-eslint/no-unused-vars
     AbstractRepository.throwNotImplementedError();
   }
 
-  async findById(id: string): Promise<Document<T>> { // eslint-disable-line @typescript-eslint/no-unused-vars
+  findById(id: string): Promise<Document<T>> { // eslint-disable-line @typescript-eslint/no-unused-vars
     AbstractRepository.throwNotImplementedError();
   }
 
-  async updateById(id: string, data: T): Promise<void> { // eslint-disable-line @typescript-eslint/no-unused-vars
+  updateById(id: string, data: T): Promise<void> { // eslint-disable-line @typescript-eslint/no-unused-vars
     AbstractRepository.throwNotImplementedError();
   }
 
-  async deleteById(id: string): Promise<void> { // eslint-disable-line @typescript-eslint/no-unused-vars
+  deleteById(id: string): Promise<void> { // eslint-disable-line @typescript-eslint/no-unused-vars
     AbstractRepository.throwNotImplementedError();
   }
 
