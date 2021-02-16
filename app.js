@@ -23,7 +23,7 @@ app.use('/job-searches/:jsId/applications', applicationsRouter);
 app.use('/job-searches/:jsId/applications/:appId/updates', applicationUpdatesRouter);
 
 // Custom error handler
-app.use(function(err, req, res) {
+app.use(function(err, req, res, next) {
   res.status(400).json({ message: err.message });
 });
 
