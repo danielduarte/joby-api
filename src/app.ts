@@ -3,6 +3,7 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import mongoose from 'mongoose';
+const cors = require('cors');
 
 import indexRouter from './routes/index';
 import jobSearchesRouter from './routes/job-searches';
@@ -12,6 +13,7 @@ import applicationUpdatesRouter from './routes/application-updates';
 const app = express();
 
 app.use(logger('dev'));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
